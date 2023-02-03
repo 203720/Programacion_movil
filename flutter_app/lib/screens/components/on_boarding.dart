@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/splash_view.dart';
 import 'package:flutter_app/screens/components/content_boarding.dart';
-
-import '../../pages/login.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -24,19 +23,19 @@ class _OnBoardingState extends State<OnBoarding> {
     {
       'text': 'ADOPCIÓN',
       'descripcion':
-          'Brindamos todos los servicios para consentir a tu mascota',
+          'Nulla faucibus tellus ut odio scelerisque vitae molestie lectus feugiat',
       'image': 'assets/images/B2.png'
     },
     {
       'text': 'HOSPITALIDAD',
       'descripcion':
-          'Brindamos todos los servicios para consentir a tu mascota',
+          'Nulla faucibus tellus ut odio scelerisque vitae molestie lectus feugiat',
       'image': 'assets/images/B3.png'
     },
     {
       'text': 'VETERINARIA',
       'descripcion':
-          'Brindamos todos los servicios para consentir a tu mascota',
+          'Nulla faucibus tellus ut odio scelerisque vitae molestie lectus feugiat',
       'image': 'assets/images/B4.png'
     },
     {
@@ -62,77 +61,71 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 3,
-              child: PageView.builder(
-                itemBuilder: (context, index) => ContentBoarding(
-                  image: listBoarding[index]["image"],
-                  text: listBoarding[index]["text"],
-                  descripcion: listBoarding[index]["descripcion"],
-                  child: const Padding(padding: EdgeInsets.all(8.0)),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 3,
+            child: PageView.builder(
+              itemBuilder: (context, index) => ContentBoarding(
+                image: listBoarding[index]["image"],
+                text: listBoarding[index]["text"],
+                descripcion: listBoarding[index]["descripcion"],
+                child: const Padding(padding: EdgeInsets.all(8.0)),
+              ),
+              controller: pageController,
+              itemCount: listBoarding.length,
+              onPageChanged: (int page) {
+                setState(() {
+                  currentPage = page;
+                });
+              },
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                      listBoarding.length,
+                      (index) =>
+                          pages(index: index, currentPage: currentPage)),
                 ),
-                controller: pageController,
-                itemCount: listBoarding.length,
-                onPageChanged: (int page) {
-                  setState(() {
-                    currentPage = page;
-                  });
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: SizedBox(
+              height: 50,
+              width: 350,
+              child: MaterialButton(
+                color: currentPage == listBoarding.length - 1
+                    ? Colors.green
+                    : Colors.white,
+                onPressed: () {
+                  currentPage == listBoarding.length - 1
+                      ? Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const SplashView()))
+                      : pageController.nextPage(
+                          duration: const Duration(milliseconds: 800),
+                          curve: Curves.easeInOutQuint);
                 },
-              ),
-            ),
-            Expanded(
-              flex: 0,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 100),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                          listBoarding.length,
-                          (index) =>
-                              pages(index: index, currentPage: currentPage)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: SizedBox(
-                height: 50,
-                width: 350,
-                child: MaterialButton(
-                  color: currentPage == listBoarding.length - 1
-                      ? Colors.green
-                      : Colors.white,
-                  onPressed: () async {
-                    currentPage == listBoarding.length - 1
-                        ? Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const Login()))
-                        : pageController.nextPage(
-                            duration: const Duration(milliseconds: 800),
-                            curve: Curves.easeInOutQuint);
-                  },
-                  textColor: currentPage == listBoarding.length - 1
-                      ? Colors.white
-                      : Colors.grey,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 3, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(currentPage == listBoarding.length - 1
-                      ? 'Continuar'
-                      : 'Siguiente'),
+                textColor: currentPage == listBoarding.length - 1
+                    ? Colors.white
+                    : Colors.grey,
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(width: 3, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(20),
                 ),
+                child: Text(currentPage == listBoarding.length - 1
+                    ? 'Continuar'
+                    : 'Siguiente'),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
