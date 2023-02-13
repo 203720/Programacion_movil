@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/login.dart';
+import 'package:flutter_app/pages/access_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -17,13 +17,13 @@ class _SplashViewState extends State<SplashView> {
   }
 
   startTime() async {
-    var duration = const Duration(seconds: 2);
+    var duration = const Duration(seconds: 1);
     return Timer(duration, route);
   }
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const Login()));
+        context, MaterialPageRoute(builder: (context) => const AccessView()));
   }
 
   @override
