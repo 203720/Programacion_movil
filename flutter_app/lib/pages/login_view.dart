@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/login_view.dart';
+import 'package:flutter_app/pages/Register_view.dart';
+import 'package:flutter_app/pages/reset_password_view.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({super.key});
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
 
-  @override
-  State<RegisterView> createState() => _RegisterViewState();
-}
-
-class _RegisterViewState extends State<RegisterView> {
-  bool _checked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +13,7 @@ class _RegisterViewState extends State<RegisterView> {
         title: Row(
           children: [
             const Text(
-              "Regístrate",
+              "Inicia sesión",
               style: TextStyle(
                 fontSize: 22,
                 color: Color.fromARGB(255, 255, 255, 255),
@@ -46,7 +41,7 @@ class _RegisterViewState extends State<RegisterView> {
                     padding: EdgeInsets.only(top: 50),
                     child: Center(
                       child: Text(
-                        "Crea una cuenta para empezar a usar la app",
+                        "Inicia sesión con tu cuenta",
                         style: TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(158, 68, 68, 68),
@@ -60,30 +55,6 @@ class _RegisterViewState extends State<RegisterView> {
               //Formulario
               Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 40),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Nombre',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        hintText: ("Nombre completo"),
-                      ),
-                    ),
-                  ),
                   const Padding(
                     padding: EdgeInsets.only(top: 25),
                     child: Align(
@@ -137,60 +108,34 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text(
-                      "La contraseña debe contener caracteres, números y símbolos con un mínimo de 6 caracteres.",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Color.fromARGB(158, 68, 68, 68),
-                        fontWeight: FontWeight.normal,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        '¿Olvidaste tú contraseña?',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(158, 68, 68, 68),
+                        ),
                       ),
-                    ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ResetPasswordView()),
+                          );
+                        },
+                        child: const Text(
+                          'Recuperar contraseña',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 16),
+                        ),
+                      )
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Row(
-                      children: [
-                        Checkbox(
-                          value: _checked,
-                          onChanged: (checked) {
-                            setState(() {
-                              _checked = checked!;
-                            });
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(60),
-                          ),
-                        ),
-                        RichText(
-                          maxLines: 2,
-                          text: const TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: "Al registrarme, acepto ",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 0, 0, 0))),
-                              TextSpan(
-                                  text: "los términos y condiciones ",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 252, 20, 95))),
-                              TextSpan(
-                                  text: "y \nla ",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 0, 0, 0))),
-                              TextSpan(
-                                text: "política de privacidad",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 252, 20, 95),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
                 ],
               ),
 
@@ -206,13 +151,7 @@ class _RegisterViewState extends State<RegisterView> {
                           height: 60,
                           width: 370,
                           child: MaterialButton(
-                            onPressed: () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const RegisterView()),
-                              ),
-                            },
+                            onPressed: () => {},
                             color: const Color.fromARGB(255, 117, 167, 875),
                             shape: RoundedRectangleBorder(
                               side: const BorderSide(
@@ -225,7 +164,7 @@ class _RegisterViewState extends State<RegisterView> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: const [
                                 Text(
-                                  "Crear cuenta",
+                                  "Iniciar sesión",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: Color.fromARGB(255, 255, 255, 255),
@@ -243,7 +182,7 @@ class _RegisterViewState extends State<RegisterView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        '¿Ya tienes cuenta?',
+                        '¿No tienes una cuenta?',
                         style: TextStyle(fontSize: 16),
                       ),
                       TextButton(
@@ -251,11 +190,11 @@ class _RegisterViewState extends State<RegisterView> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const LoginView()),
+                                builder: (context) => const RegisterView()),
                           );
                         },
                         child: const Text(
-                          'Iniciar sesión',
+                          'Registrate',
                           style:
                               TextStyle(color: Colors.pinkAccent, fontSize: 16),
                         ),

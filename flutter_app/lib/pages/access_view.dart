@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/Register_view.dart';
-import 'package:flutter_app/pages/login.dart';
+import 'package:flutter_app/pages/register_view.dart';
+import 'package:flutter_app/pages/login_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AccessView extends StatefulWidget {
@@ -221,7 +221,7 @@ class _AccessViewState extends State<AccessView> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Login()),
+                                          const LoginView()),
                                 ),
                               },
                               child: const Text(
