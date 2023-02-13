@@ -47,6 +47,7 @@ class _RegisterViewState extends State<RegisterView> {
                     child: Center(
                       child: Text(
                         "Crea una cuenta para empezar a usar la app",
+                        textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(158, 68, 68, 68),
@@ -141,8 +142,9 @@ class _RegisterViewState extends State<RegisterView> {
                     padding: EdgeInsets.only(top: 20),
                     child: Text(
                       "La contraseña debe contener caracteres, números y símbolos con un mínimo de 6 caracteres.",
+                      textAlign: TextAlign.justify,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 14,
                         color: Color.fromARGB(158, 68, 68, 68),
                         fontWeight: FontWeight.normal,
                       ),

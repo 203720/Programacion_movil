@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/new_password_view.dart';
+import 'package:flutter_app/pages/login_view.dart';
 
-class ResetPasswordView extends StatefulWidget {
-  const ResetPasswordView({super.key});
+class NewPasswordView extends StatefulWidget {
+  const NewPasswordView({super.key});
 
   @override
-  State<ResetPasswordView> createState() => _ResetPasswoState();
+  State<NewPasswordView> createState() => _NewPasswordViewState();
 }
 
-class _ResetPasswoState extends State<ResetPasswordView> {
+class _NewPasswordViewState extends State<NewPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +45,7 @@ class _ResetPasswoState extends State<ResetPasswordView> {
                     padding: EdgeInsets.only(top: 50),
                     child: Center(
                       child: Text(
-                        "Ingresa tu email para restablecer tu contraseña",
+                        "Por su seguridad, tu contraseña debe tener una longitud de entre 8 y 15 caracteres, usar mayúsculas, minúsculas, contener por lo menos un número y un carácter especial.",
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 16,
@@ -65,7 +65,7 @@ class _ResetPasswoState extends State<ResetPasswordView> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Correo electrónico',
+                        'Nueva contraseña',
                         style: TextStyle(
                             fontSize: 18,
                             color: Color.fromARGB(255, 0, 0, 0),
@@ -80,19 +80,31 @@ class _ResetPasswoState extends State<ResetPasswordView> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        hintText: ("Dirección de correo"),
+                        hintText: ("Nueva contraseña"),
                       ),
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text(
-                      "Ingrese su correo electrónico registrado y le eviaremos un correo electrónico que contiene un enlace para restablecer su contraseña.",
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(158, 68, 68, 68),
-                        fontWeight: FontWeight.normal,
+                    padding: EdgeInsets.only(top: 60),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Confirmar nueva contraseña',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        hintText: ("Confirma tu nueva contraseña"),
                       ),
                     ),
                   ),
@@ -106,19 +118,19 @@ class _ResetPasswoState extends State<ResetPasswordView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 360),
+                        padding: const EdgeInsets.only(top: 260),
                         child: SizedBox(
                           height: 60,
                           width: 370,
                           child: MaterialButton(
                             onPressed: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const NewPasswordView()),
-                                ),
-                              },
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const LoginView()),
+                              ),
+                            },
                             color: const Color.fromARGB(255, 117, 167, 875),
                             shape: RoundedRectangleBorder(
                               side: const BorderSide(
@@ -131,7 +143,7 @@ class _ResetPasswoState extends State<ResetPasswordView> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: const [
                                 Text(
-                                  "Enviar solicitud",
+                                  "Actualizar contraseña",
                                   style: TextStyle(
                                     fontSize: 18,
                                     color: Color.fromARGB(255, 255, 255, 255),

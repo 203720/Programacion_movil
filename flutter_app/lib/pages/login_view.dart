@@ -42,6 +42,7 @@ class LoginView extends StatelessWidget {
                     child: Center(
                       child: Text(
                         "Inicia sesión con tu cuenta",
+                        textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 16,
                           color: Color.fromARGB(158, 68, 68, 68),

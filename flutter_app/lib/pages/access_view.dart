@@ -95,7 +95,7 @@ class _AccessViewState extends State<AccessView> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: const [
                           FaIcon(
-                            FontAwesomeIcons.facebookSquare,
+                            FontAwesomeIcons.squareFacebook,
                             color: Color.fromARGB(255, 255, 255, 255),
                             size: 30,
                           ),
