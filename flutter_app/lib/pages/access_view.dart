@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/Register_view.dart';
+import 'package:flutter_app/pages/login.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AccessView extends StatefulWidget {
@@ -100,7 +102,7 @@ class _AccessViewState extends State<AccessView> {
                           Padding(
                             padding: EdgeInsets.only(right: 50),
                             child: Text(
-                              "Continuar con Google",
+                              "Continuar con Facebook",
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Color.fromARGB(255, 255, 255, 255),
@@ -124,7 +126,13 @@ class _AccessViewState extends State<AccessView> {
                     height: 60,
                     width: 350,
                     child: MaterialButton(
-                      onPressed: () => {},
+                      onPressed: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterView()),
+                        ),
+                      },
                       color: const Color.fromARGB(255, 255, 255, 255),
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
@@ -208,7 +216,14 @@ class _AccessViewState extends State<AccessView> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () => {},
+                              onPressed: () => {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const Login()),
+                                ),
+                              },
                               child: const Text(
                                 "Iniciar sesión",
                                 style: TextStyle(
