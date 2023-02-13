@@ -10,7 +10,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-
   @override
   void initState() {
     super.initState();
@@ -18,22 +17,17 @@ class _SplashViewState extends State<SplashView> {
   }
 
   startTime() async {
-    var duration = const Duration(seconds: 3);
+    var duration = const Duration(seconds: 2);
     return Timer(duration, route);
   }
 
   route() {
-    Navigator.pushReplacement(context, MaterialPageRoute(
-      builder: (context) => const Login()
-    ));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Login()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return initWidget(context);
-  }
-
-  Widget initWidget(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
