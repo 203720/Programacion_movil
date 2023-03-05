@@ -15,6 +15,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 73, 25, 125),
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
               "Recuperar contraseña",
@@ -24,142 +25,114 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                 fontWeight: FontWeight.normal,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 35),
-              child: Image.asset(
-                'assets/images/A3.png',
-                scale: 5.3,
-              ),
+            Image.asset(
+              'assets/images/A3.png',
+              scale: 5.3,
             ),
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            children: [
-              Column(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(top: 50),
-                    child: Center(
-                      child: Text(
-                        "Por su seguridad, tu contraseña debe tener una longitud de entre 8 y 15 caracteres, usar mayúsculas, minúsculas, contener por lo menos un número y un carácter especial.",
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color.fromARGB(158, 68, 68, 68),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              //Formulario
-              Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 60),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Nueva contraseña',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: LayoutBuilder(
+            builder:
+                (BuildContext context, BoxConstraints viewportConstraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: viewportConstraints.maxHeight,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        hintText: ("Nueva contraseña"),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 60),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Confirmar nueva contraseña',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        hintText: ("Confirma tu nueva contraseña"),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              //Iniciar sesión
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20.0),
+                            child: Text(
+                              'Por seguridad, tu contraseña debe tener una longitud de entre 8 y15 caracteres, usar mayúsculas, minúsculas, contener por lo menos un número y un carácter especial',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xFF767677),
+                                  fontWeight: FontWeight.w900),
+                                  textAlign: TextAlign.justify,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Text('Nueva contraseña',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w900)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                hintText: ('Nueva contraseña'),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Text('Confirmar nueva contraseña',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w900)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                hintText: ('Confirma tu nueva contraseña'),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 260),
+                        padding: const EdgeInsets.only(bottom: 40.0),
                         child: SizedBox(
-                          height: 60,
-                          width: 370,
+                          width: double.infinity,
+                          height: 55.0,
                           child: MaterialButton(
-                            onPressed: () => {
+                            color: const Color(0xFF75a757),
+                            onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         const LoginView()),
-                              ),
+                              );
                             },
-                            color: const Color.fromARGB(255, 117, 167, 875),
                             shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                color: Color.fromARGB(255, 117, 167, 875),
-                              ),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: const [
-                                Text(
-                                  "Actualizar contraseña",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Color.fromARGB(255, 255, 255, 255),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                                borderRadius: BorderRadius.circular(30.0)),
+                            child: const Text(
+                              'Actualizar contraseña',
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.white),
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              );
+            },
           ),
         ),
       ),

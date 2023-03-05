@@ -15,6 +15,7 @@ class _ResetPasswoState extends State<ResetPasswordView> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 73, 25, 125),
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
               "Recuperar contraseña",
@@ -24,130 +25,100 @@ class _ResetPasswoState extends State<ResetPasswordView> {
                 fontWeight: FontWeight.normal,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 35),
-              child: Image.asset(
-                'assets/images/A3.png',
-                scale: 5.3,
-              ),
+            Image.asset(
+              'assets/images/A3.png',
+              scale: 5.3,
             ),
           ],
         ),
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
-            children: [
-              Column(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(top: 50),
-                    child: Center(
-                      child: Text(
-                        "Ingresa tu email para restablecer tu contraseña",
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color.fromARGB(158, 68, 68, 68),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              //Formulario
-              Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 60),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Correo electrónico',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: LayoutBuilder(
+            builder:
+                (BuildContext context, BoxConstraints viewportConstraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: viewportConstraints.maxHeight,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        hintText: ("Dirección de correo"),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text(
-                      "Ingrese su correo electrónico registrado y le eviaremos un correo electrónico que contiene un enlace para restablecer su contraseña.",
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color.fromARGB(158, 68, 68, 68),
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              //Iniciar sesión
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 360),
-                        child: SizedBox(
-                          height: 60,
-                          width: 370,
-                          child: MaterialButton(
-                            onPressed: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const NewPasswordView()),
-                                ),
-                              },
-                            color: const Color.fromARGB(255, 117, 167, 875),
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                width: 1,
-                                color: Color.fromARGB(255, 117, 167, 875),
-                              ),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: const [
-                                Text(
-                                  "Enviar solicitud",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Color.fromARGB(255, 255, 255, 255),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                      Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20.0),
+                            child: Text(
+                              'Ingresa tu email para restablecer tu contraseña',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xFF767677),
+                                  fontWeight: FontWeight.w900),
                             ),
                           ),
-                        ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Text('Correo electrónico',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w900)),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                hintText: ('Dirección de correo'),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.0),
+                            child: Text(
+                              'Ingrese su correo electrónico registrado y le enivaremos un correo electrónico que contiene un enlace para restablecer su contraseña.',
+                              style: TextStyle(
+                                  color: Color(0xFF767677), fontSize: 13),
+                              textAlign: TextAlign.justify,
+                            ),
+                          ),
+                        ],
                       ),
+                      Padding(
+                            padding: const EdgeInsets.only(bottom: 40.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 55.0,
+                              child: MaterialButton(
+                                color: const Color(0xFF75a757),
+                                onPressed: () {
+                                  Navigator.push(context,
+                                    MaterialPageRoute(
+                                          builder: (context) => const NewPasswordView()),
+                                    );
+                                },
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0)),
+                                child: const Text(
+                                  'Enviar Solicitud',
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ),
                     ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              );
+            },
           ),
         ),
       ),
