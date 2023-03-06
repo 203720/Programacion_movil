@@ -43,4 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-flutter_app\lib\firebase_options.dart
+
+##ignorando
+firebase_options.dart
