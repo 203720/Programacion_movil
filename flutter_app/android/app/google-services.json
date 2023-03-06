@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "650378069562",
+    "project_id": "pets-project-f507e",
+    "storage_bucket": "pets-project-f507e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650378069562:android:2404ef86220affc83f1703",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650378069562-cir6medlru0j9skn931lu7ng2e6qsun5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_app",
+            "certificate_hash": "7728e1727f0793888fb0eabbb2ab485883885b7e"
+          }
+        },
+        {
+          "client_id": "650378069562-tjsbjk0hugu33b09mmrvahcchqp0ired.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKOd4vbWMvEV4Z_MvdDToQffqVGw81YJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650378069562-tjsbjk0hugu33b09mmrvahcchqp0ired.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
