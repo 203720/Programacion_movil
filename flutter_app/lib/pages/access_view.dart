@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/profile_view.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_app/pages/register_view.dart';
@@ -15,6 +16,8 @@ class AccessView extends StatefulWidget {
 }
 
 class _AccessViewState extends State<AccessView> {
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final FacebookAuth facebookAuth = FacebookAuth.instance;
   Future<UserCredential?> signInWithGoogle() async {
     // Create an instance of the firebase auth and google signin
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -34,6 +37,22 @@ class _AccessViewState extends State<AccessView> {
     final UserCredential userCredential =
         await auth.signInWithCredential(credential);
     return null;
+  }
+
+  Future signInWithFacebook() async {
+    final LoginResult result = await facebookAuth.login();
+    if (result.status == LoginStatus.success) {
+      try {
+        final OAuthCredential credential =
+            FacebookAuthProvider.credential(result.accessToken!.token);
+        return await firebaseAuth.signInWithCredential(credential);
+        // saving the values
+      } on FirebaseAuthException catch (e) {
+        print(e.message);
+      }
+    } else {
+      print('Error');
+    }
   }
 
   @override
@@ -114,7 +133,17 @@ class _AccessViewState extends State<AccessView> {
               height: 60,
               width: double.infinity,
               child: MaterialButton(
-                onPressed: () => {},
+                onPressed: () async {
+                  await signInWithFacebook();
+                  if (mounted) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileView(),
+                      ),
+                    );
+                  }
+                },
                 color: const Color.fromARGB(255, 50, 79, 165),
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(
